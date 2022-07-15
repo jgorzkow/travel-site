@@ -7,3 +7,8 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+strong {
+  font-weight:900;
+  color: #333;
+}

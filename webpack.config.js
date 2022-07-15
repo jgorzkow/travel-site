@@ -2,6 +2,7 @@
 const path = require('path');
 const postCSSPlugins = [
   require('postcss-import'),
+  require('postcss-mixins'),
   require('postcss-simple-vars'),
   require('postcss-nested'),
   require('autoprefixer'),
@@ -12,9 +13,20 @@ module.exports = {
     filename: 'bundled.js',
     path: path.resolve(__dirname, 'app')
   },
+  devServer: {
+    before: function(app, server) {
+      // ** will look for folder and subfolder for .html
+      server._watch('./app/**/*.html')
+    },
+    contentBase: path.join(__dirname, 'app'),
+    // inject content to web browser
+    hot:true,
+    // it will alow all devices in the same network to view local page
+    host: '0.0.0.0',
+    port: 3000,
+  },
   mode: 'development',
-//  this once iniciated it will monitor the change and it need to be stop by control+c 
-  watch: true,
+
   // properties name module. This module will configure css-loader pack 
   module: {
     rules: [
