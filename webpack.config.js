@@ -23,7 +23,7 @@ module.exports = {
     hot:true,
     // it will alow all devices in the same network to view local page
     host: '0.0.0.0',
-    port: 3000,
+    port: 4000,
   },
   mode: 'development',
 
